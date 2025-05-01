@@ -3,7 +3,7 @@ require('dotenv').config({ path: require('path').resolve(__dirname, '../../.env'
 const { Worker } = require('bullmq');
 const path = require('path');
 const fs = require('fs').promises;
-const prisma = require('../db/prismaClient');
+const prisma = require('../prismaClient');
 const { getRedisClient, connectRedis } = require('../queue/redis');
 const { QUEUE_NAME } = require('../queue/renderQueue');
 
