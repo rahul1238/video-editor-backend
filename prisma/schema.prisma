@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Video {
+  id          String    @id @default(uuid())
+  originalName String
+  filePath    String    @unique // Path to the original uploaded file
+  duration    Float?    
+  size        Int       
+  status      String    @default("uploaded")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  trimmedFilePath String?   @unique
+  subtitledFilePath String? @unique
+  renderedFilePath String?  @unique
+
+}
